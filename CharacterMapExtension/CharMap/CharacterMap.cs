@@ -61,18 +61,18 @@ internal class CharacterMapManager
         }
     }
 
-    private void LoadFile(string filePath)
+    private static JsonSerializerOptions jsonOptions = new()
     {
-        try
-        {
-            var json = File.ReadAllText(filePath);
-            var jsonOptions = new JsonSerializerOptions
-            {
                 PropertyNameCaseInsensitive = true,
                 ReadCommentHandling = JsonCommentHandling.Skip,
                 AllowTrailingCommas = true,
             };
 
+    private void LoadFile(string filePath)
+    {
+        try
+        {
+            var json = File.ReadAllText(filePath);
             var characters = JsonSerializer.Deserialize<Dictionary<string, SymbolData>>(
                 json,
                 jsonOptions
