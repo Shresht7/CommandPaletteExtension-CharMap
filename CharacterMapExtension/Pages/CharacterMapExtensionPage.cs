@@ -2,24 +2,42 @@
 // The Microsoft Corporation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using CharacterMapExtension.CharMap;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
+using System.Collections.Generic;
 
 namespace CharacterMapExtension;
 
 internal sealed partial class CharacterMapExtensionPage : ListPage
 {
-    public CharacterMapExtensionPage()
+    private readonly CharacterMapManager _characterMap;
+
+    public CharacterMapExtensionPage(CharacterMapManager characterMap)
     {
         Icon = IconHelpers.FromRelativePath("Assets\\StoreLogo.png");
-        Title = "CharacterMap";
-        Name = "Open";
+        Title = "Character Map";
+        Name = "Search";
+        PlaceholderText = "Search Character...";
+        _characterMap = characterMap;
+
     }
 
     public override IListItem[] GetItems()
     {
-        return [
-            new ListItem(new NoOpCommand()) { Title = "TODO: Implement your extension here" }
-        ];
+        List<ListItem> results = [];
+
+        var searchResults = _characterMap.Search("");
+        foreach (var item in searchResults)
+        {
+            var result = new ListItem()
+            {
+                Title = "Result",
+                Subtitle = "Description"
+            };
+            results.Add(result);
+        }
+
+        return results.ToArray();
     }
 }
