@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using CharacterMapExtension.CharMap;
+using CharacterMapExtension.Commands;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 using System.Collections.Generic;
@@ -56,7 +57,7 @@ internal sealed partial class CharacterMapExtensionPage : ListPage
             new Tag() { Text = item.symbol.Category, ToolTip = "Category" },
             ];
 
-        var result = new ListItem()
+        var result = new ListItem(new CopyToClipboard(item.symbol.Symbol))
         {
             Title = item.symbol.Description,
             Subtitle = subtitle,
