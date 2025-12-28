@@ -73,7 +73,7 @@ internal class CharacterMapManager
                 AllowTrailingCommas = true,
             };
 
-            var characters = JsonSerializer.Deserialize<Dictionary<string, ISymbol>>(
+            var characters = JsonSerializer.Deserialize<Dictionary<string, SymbolData>>(
                 json,
                 jsonOptions
             );
