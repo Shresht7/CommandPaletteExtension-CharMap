@@ -13,7 +13,7 @@ namespace CharacterMapExtension.CharMap;
 
 internal class CharacterMapManager
 {
-    private readonly Dictionary<string, ISymbol> _characterMap = [];
+    private readonly Dictionary<string, ISymbol> _characterMap = new Dictionary<string, ISymbol>();
     private readonly string _dataPath;
 
     public IReadOnlyDictionary<string, ISymbol> CharacterMap => _characterMap;

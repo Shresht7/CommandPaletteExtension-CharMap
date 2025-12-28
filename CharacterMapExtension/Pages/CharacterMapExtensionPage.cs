@@ -32,8 +32,8 @@ internal sealed partial class CharacterMapExtensionPage : ListPage
         {
             var result = new ListItem()
             {
-                Title = "Result",
-                Subtitle = "Description"
+                Title = item.symbol.Symbol,
+                Subtitle = item.symbol.Description,
             };
             results.Add(result);
         }

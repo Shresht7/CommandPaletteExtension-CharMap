@@ -7,26 +7,26 @@ using System.Threading.Tasks;
 
 namespace CharacterMapExtension.CharMap;
 
-internal class SymbolData: ISymbol
+internal class SymbolData : ISymbol
 {
     [JsonPropertyName("symbol")]
-    public string Symbol => string.Empty;
+    public string Symbol { get; set; } = string.Empty;
 
     [JsonPropertyName("description")]
-    public string Description => string.Empty;
+    public string Description { get; set; } = string.Empty;
 
     [JsonPropertyName("category")]
-    public string Category => string.Empty;
+    public string Category { get; set; } = string.Empty;
 
     [JsonPropertyName("unicode")]
-    public string Unicode => string.Empty;
+    public string Unicode { get; set; } = string.Empty;
 
     [JsonPropertyName("decimal")]
-    public string Dec => string.Empty;
+    public string Dec { get; set; } = string.Empty;
 
     [JsonPropertyName("latex")]
-    public string Latex => string.Empty;
+    public string Latex { get; set; } = string.Empty;
 
     [JsonPropertyName("keywords")]
-    public List<string> Keywords => [];
+    public List<string> Keywords { get; set; } = new();
 }
