@@ -20,7 +20,7 @@ internal sealed partial class CharacterMapExtensionPage : ListPage
         Title = "Character Map";
         Name = "Character Map";
         PlaceholderText = "Search Character...";
-        Icon = new IconInfo("U+0394");
+        Icon = new IconInfo("\u0394");
         _characterMap = characterMap;
     }
 
