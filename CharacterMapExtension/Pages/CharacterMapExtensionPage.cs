@@ -17,10 +17,10 @@ internal sealed partial class CharacterMapExtensionPage : ListPage
 
     public CharacterMapExtensionPage(CharacterMapManager characterMap)
     {
-        Icon = IconHelpers.FromRelativePath("Assets\\StoreLogo.png");
         Title = "Character Map";
         Name = "Search";
         PlaceholderText = "Search Character...";
+        Icon = new IconInfo("\uE8EF");
         _characterMap = characterMap;
 
     }
@@ -28,7 +28,6 @@ internal sealed partial class CharacterMapExtensionPage : ListPage
     public override IListItem[] GetItems()
     {
         List<ListItem> results = new();
-
         var searchResults = _characterMap.Search("");
         foreach (var item in searchResults)
         {
