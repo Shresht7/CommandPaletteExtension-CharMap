@@ -18,11 +18,10 @@ internal sealed partial class CharacterMapExtensionPage : ListPage
     public CharacterMapExtensionPage(CharacterMapManager characterMap)
     {
         Title = "Character Map";
-        Name = "Search";
+        Name = "Character Map";
         PlaceholderText = "Search Character...";
-        Icon = new IconInfo("\uE8EF");
+        Icon = new IconInfo("U+0394");
         _characterMap = characterMap;
-
     }
 
     public override IListItem[] GetItems()

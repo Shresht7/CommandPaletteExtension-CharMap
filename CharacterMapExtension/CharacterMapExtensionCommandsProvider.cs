@@ -15,8 +15,6 @@ public partial class CharacterMapExtensionCommandsProvider : CommandProvider
 
     public CharacterMapExtensionCommandsProvider()
     {
-        DisplayName = "CharacterMap";
-        Icon = new IconInfo("\uE8EF");
         _characterMapManager = new CharacterMapManager();
         _commands = [
             new CommandItem(new CharacterMapExtensionPage(_characterMapManager)) { Title = DisplayName },
