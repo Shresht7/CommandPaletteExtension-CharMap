@@ -18,13 +18,19 @@ internal class CharacterMapManager
 
     public IReadOnlyDictionary<string, ISymbol> CharacterMap => _characterMap;
 
-    public CharacterMapManager(string? customPath)
+    public CharacterMapManager()
     {
-        _dataPath = customPath ?? Path.Combine(
+        _dataPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "CharacterMap"
         );
 
+        LoadCharacterMapData();
+    }
+
+    public CharacterMapManager(string customPath)
+    {
+        _dataPath = customPath;
         LoadCharacterMapData();
     }
 
