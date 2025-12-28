@@ -63,10 +63,10 @@ internal class CharacterMapManager
 
     private static JsonSerializerOptions jsonOptions = new()
     {
-                PropertyNameCaseInsensitive = true,
-                ReadCommentHandling = JsonCommentHandling.Skip,
-                AllowTrailingCommas = true,
-            };
+        PropertyNameCaseInsensitive = true,
+        ReadCommentHandling = JsonCommentHandling.Skip,
+        AllowTrailingCommas = true,
+    };
 
     private void LoadFile(string filePath)
     {
@@ -116,9 +116,7 @@ internal class CharacterMapManager
     {
         if (string.IsNullOrWhiteSpace(query))
         {
-            return _characterMap.Values
-                    .Take(20)
-                    .Select(c => (c, score: 0));
+            return _characterMap.Values.Select(c => (c, score: 0));
         }
 
         var searchTerm = query.Trim().ToLower();
@@ -133,7 +131,7 @@ internal class CharacterMapManager
             }
         }
 
-        return results.OrderByDescending(r => r.score).Take(20);
+        return results.OrderByDescending(r => r.score);
     }
 
     private static int CalculateScore(string query, ISymbol symbol)
