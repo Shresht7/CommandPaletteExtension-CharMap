@@ -17,10 +17,10 @@ public partial class CharacterMapExtensionCommandsProvider : CommandProvider
     {
         DisplayName = "CharacterMap";
         Icon = new IconInfo("\uE8EF");
-        _commands = [
-            new CommandItem(new CharacterMapExtensionPage()) { Title = DisplayName },
-        ];
         _characterMapManager = new CharacterMapManager();
+        _commands = [
+            new CommandItem(new CharacterMapExtensionPage(_characterMapManager)) { Title = DisplayName },
+        ];
     }
 
     public override ICommandItem[] TopLevelCommands()
