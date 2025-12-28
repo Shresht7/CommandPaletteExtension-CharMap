@@ -25,19 +25,45 @@ internal sealed partial class CharacterMapExtensionPage : ListPage
 
     public override IListItem[] GetItems()
     {
-        List<ListItem> results = [];
+        List<ListItem> results = new();
 
         var searchResults = _characterMap.Search("");
         foreach (var item in searchResults)
         {
-            var result = new ListItem()
-            {
-                Title = item.symbol.Symbol,
-                Subtitle = item.symbol.Description,
-            };
-            results.Add(result);
+            results.Add(CreateListItem(item));
         }
-
         return results.ToArray();
+    }
+
+    private static ListItem CreateListItem((ISymbol symbol, int score) item)
+    {
+        List<string> _subtitle = [];
+        if (!string.IsNullOrEmpty(item.symbol.Unicode))
+        {
+            _subtitle.Add($"Unicode: {item.symbol.Unicode.ToUpper()}");
+        }
+        if (!string.IsNullOrEmpty(item.symbol.Dec))
+        {
+            _subtitle.Add($"Unicode: {item.symbol.Dec}");
+        }
+        if (!string.IsNullOrEmpty(item.symbol.Latex))
+        {
+            _subtitle.Add($"Unicode: {item.symbol.Latex}");
+        }
+        string subtitle = string.Join("  |  ", _subtitle);
+
+        Tag[] tags = [
+            new Tag() { Text = item.symbol.Category, ToolTip = "Category" },
+            ];
+
+        var result = new ListItem()
+        {
+            Title = item.symbol.Description,
+            Subtitle = subtitle,
+            Tags = tags,
+            Icon = new IconInfo(item.symbol.Symbol)
+        };
+
+        return result;
     }
 }
