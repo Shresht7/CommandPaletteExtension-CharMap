@@ -7,6 +7,7 @@ using CharacterMapExtension.Commands;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 using System.Collections.Generic;
+using Windows.System;
 
 namespace CharacterMapExtension;
 
@@ -57,12 +58,27 @@ internal sealed partial class CharacterMapExtensionPage : ListPage
             new Tag() { Text = item.symbol.Category, ToolTip = "Category" },
             ];
 
-        var result = new ListItem(new CopyToClipboard(item.symbol.Symbol))
+        var result = new ListItem()
         {
             Title = item.symbol.Description,
             Subtitle = subtitle,
             Tags = tags,
-            Icon = new IconInfo(item.symbol.Symbol)
+            Icon = new IconInfo(item.symbol.Symbol),
+            Command = new CopyToClipboard(item.symbol.Symbol),
+            MoreCommands = [
+                new CommandContextItem(new CopyToClipboard(item.symbol.Unicode)) {
+                    Title = "Copy Unicode",
+                    RequestedShortcut = new KeyChord() { Vkey = (int)VirtualKey.U, Modifiers = VirtualKeyModifiers.Control }
+                },
+                new CommandContextItem(new CopyToClipboard(item.symbol.Dec)) {
+                    Title = "Copy Decimal",
+                    RequestedShortcut = new KeyChord() { Vkey = (int)VirtualKey.D, Modifiers = VirtualKeyModifiers.Control }
+                },
+                new CommandContextItem(new CopyToClipboard(item.symbol.Latex)) {
+                    Title = "Copy LaTeX",
+                    RequestedShortcut = new KeyChord() { Vkey = (int)VirtualKey.L, Modifiers = VirtualKeyModifiers.Control }
+                },
+            ]
         };
 
         return result;
