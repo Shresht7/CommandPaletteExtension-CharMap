@@ -147,11 +147,8 @@ internal class CharacterMapManager
         // Description
         if (!string.IsNullOrEmpty(symbol.Description))
         {
-            var descScore = StringMatcher.FuzzySearch(query, symbol.Description);
-            if (descScore != null)
-            {
-                maxScore = Math.Max(maxScore, descScore.Score);
-            }
+            var descScore = FuzzyStringMatcher.ScoreFuzzy(query, symbol.Description);
+            maxScore = Math.Max(maxScore, descScore);
         }
 
         // LaTeX Command
@@ -159,39 +156,27 @@ internal class CharacterMapManager
         {
             var latexQuery = query.StartsWith("\\") ? query : "\\" + query;
 
-            var latexScore1 = StringMatcher.FuzzySearch(latexQuery, symbol.Latex);
-            if (latexScore1 != null)
-            {
-                maxScore = Math.Max(maxScore, latexScore1.Score * 10);
-            }
+            var latexScore1 = FuzzyStringMatcher.ScoreFuzzy(latexQuery, symbol.Latex);
+                maxScore = Math.Max(maxScore, latexScore1 * 10);
 
-            var latexScore2 = StringMatcher.FuzzySearch(query, symbol.Latex);
-            if (latexScore2 != null)
-            {
-                maxScore = Math.Max(maxScore, latexScore2.Score);
-            }
+            var latexScore2 = FuzzyStringMatcher.ScoreFuzzy(query, symbol.Latex);
+                maxScore = Math.Max(maxScore, latexScore2);
 
             // Keywords
             if (symbol.Keywords != null)
             {
                 foreach (var keyword in symbol.Keywords)
                 {
-                    var keywordScore = StringMatcher.FuzzySearch(query, keyword);
-                    if (keywordScore != null)
-                    {
-                        maxScore = Math.Max(maxScore, keywordScore.Score);
-                    }
+                    var keywordScore = FuzzyStringMatcher.ScoreFuzzy(query, keyword);
+                        maxScore = Math.Max(maxScore, keywordScore);
                 }
             }
 
             // Category
             if (!string.IsNullOrEmpty(symbol.Category))
             {
-                var categoryScore = StringMatcher.FuzzySearch(query, symbol.Category);
-                if (categoryScore != null)
-                {
-                    maxScore = Math.Max(maxScore, categoryScore.Score / 2);
-                }
+                var categoryScore = FuzzyStringMatcher.ScoreFuzzy(query, symbol.Category);
+                maxScore = Math.Max(maxScore, categoryScore / 2);
             }
         }
 
