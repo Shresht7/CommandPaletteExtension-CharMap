@@ -9,6 +9,7 @@ A Command Palette extension that provides a searchable character map. It allows 
 
 - Fuzzy search for characters by description, Unicode, decimal, LaTeX, and keywords.
 - Copy character symbol to clipboard by pressing <kbd>Enter</kbd>.
+- Place character symbol by pressing <kbd>Ctrl</kbd> + <kbd>Enter</kbd>
 - Context menu with options to copy character codes (Unicode, Decimal, LaTeX) to the clipboard.
 - Keyboard shortcuts for copying character codes:
     - <kbd>Ctrl</kbd> + <kbd>U</kbd> for Unicode
