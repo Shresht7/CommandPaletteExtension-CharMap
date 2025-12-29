@@ -2,7 +2,8 @@
 
 A Command Palette extension that provides a searchable character map. It allows users to quickly find and copy special characters, symbols, and emojis.
 
-![Character Map Extension Screenshot](./screenshot.png)
+![Character Map Extension Screenshot 1](./screenshot1.png)
+![Character Map Extension Screenshot 2](./screenshot2.png)
 
 ## 🌟 Features
 
