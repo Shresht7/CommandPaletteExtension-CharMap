@@ -44,11 +44,11 @@ internal sealed partial class CharacterMapExtensionPage : ListPage
         }
         if (!string.IsNullOrEmpty(item.symbol.Dec))
         {
-            _subtitle.Add($"Unicode: {item.symbol.Dec}");
+            _subtitle.Add($"Decimal: {item.symbol.Dec}");
         }
         if (!string.IsNullOrEmpty(item.symbol.Latex))
         {
-            _subtitle.Add($"Unicode: {item.symbol.Latex}");
+            _subtitle.Add($"LaTeX: {item.symbol.Latex}");
         }
         string subtitle = string.Join("  |  ", _subtitle);
 
