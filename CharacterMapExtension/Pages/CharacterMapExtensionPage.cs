@@ -64,6 +64,10 @@ internal sealed partial class CharacterMapExtensionPage : ListPage
             Icon = new IconInfo(item.symbol.Symbol),
             Command = new CopyToClipboard(item.symbol.Symbol),
             MoreCommands = [
+                new CommandContextItem(new TypeCharacter(item.symbol.Symbol)) {
+                    Title = "Type Character",
+                    RequestedShortcut = new KeyChord() { Vkey = (int)VirtualKey.Enter, Modifiers = VirtualKeyModifiers.Control }
+                },
                 new CommandContextItem(new CopyToClipboard(item.symbol.Unicode)) {
                     Title = "Copy Unicode",
                     RequestedShortcut = new KeyChord() { Vkey = (int)VirtualKey.U, Modifiers = VirtualKeyModifiers.Control }
